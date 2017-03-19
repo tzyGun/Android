@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">App1</string>
+    <string name="addition">Dodawanie</string>
+    <string name="substraction">Odejmowanie</string>
+    <string name="division">Dzielenie</string>
+    <string name="multiplication">Mnozenie</string>
+    <string name="home">Kalkulator</string>
+    <string name="result">Wynik</string>
+    <string name="calculate">Licz</string>
+
+
 </resources>
