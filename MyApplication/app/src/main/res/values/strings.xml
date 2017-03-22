@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">MultipleActivities</string>
+    <string name="results">Results</string>
+    <string name="Multiplication">Multiplication: </string>
+    <string name="Division">Division: </string>
+    <string name="Substraction">Substraction: </string>
+    <string name="Addition">Addition: </string>
+    <string name="first_number">First number</string>
+    <string name="second_number">Second number</string>
+    <string name="calculate">Call second event to calculate</string>
 </resources>
