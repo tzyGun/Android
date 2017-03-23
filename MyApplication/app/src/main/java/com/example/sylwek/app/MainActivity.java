@@ -2,6 +2,7 @@ package com.example.sylwek.app;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ public class MainActivity extends Activity {
     TextView multiplication;
     TextView subtraction;
     TextView division;
+    Button callResultActivityButton;
+    Button callChartActivity;
 
 
 
@@ -27,6 +30,8 @@ public class MainActivity extends Activity {
         first = (EditText) findViewById(R.id.first_input);
         second = (EditText) findViewById(R.id.second_input);
 
+        callResultActivityButton = (Button) findViewById(R.id.startintent);
+        callChartActivity = (Button) findViewById(R.id.chartActivity);
 
         addidtion = (TextView) findViewById(R.id.addidtion);
         multiplication = (TextView) findViewById(R.id.multiplication);
@@ -39,13 +44,17 @@ public class MainActivity extends Activity {
     }
     public void onClick(View view) {
 
-        String stringToPass= first.getText()
-                .toString()
-                .concat(",")
-                .concat(second.getText().toString());
-        Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra(PASSING_VALUE,stringToPass);
-        startActivityForResult(intent, REQUEST_CODE);
+        if(first.getText().length()> 0 && second.getText().length() > 0) {
+            String stringToPass= first.getText()
+                    .toString()
+                    .concat(",")
+                    .concat(second.getText().toString());
+            Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra(PASSING_VALUE, stringToPass);
+            startActivityForResult(intent, REQUEST_CODE);
+        } else {
+            Toast.makeText(this, "Fill empty fields", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -71,5 +80,12 @@ public class MainActivity extends Activity {
             }
 
         }
+    }
+
+    public void onClickChartButton ( View v){
+        Intent intent = new Intent(this, ChartActivity.class);
+
+        startActivity(intent);
+
     }
 }

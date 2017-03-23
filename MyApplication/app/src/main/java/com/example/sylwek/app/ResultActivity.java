@@ -7,7 +7,9 @@ import android.renderscript.Float2;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/*
+ Just for tests GraphView library  http://www.android-graphview.org/
+ */
 public class ResultActivity extends Activity {
 
     TextView first;
@@ -27,6 +29,7 @@ public class ResultActivity extends Activity {
 
 
         Bundle extraMessage = getIntent().getExtras();
+
         String message = extraMessage.getString(MainActivity.PASSING_VALUE);
 
         String values [] = message.split(",");
