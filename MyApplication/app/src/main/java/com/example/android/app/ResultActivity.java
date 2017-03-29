@@ -1,7 +1,6 @@
-package com.example.sylwek.app;
+package com.example.android.app;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 

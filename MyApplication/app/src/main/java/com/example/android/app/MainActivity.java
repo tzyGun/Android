@@ -1,4 +1,4 @@
-package com.example.sylwek.app;
+package com.example.android.app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -50,10 +51,9 @@ public class MainActivity extends Activity {
         this.calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                     float a = Float.parseFloat(firstNumber.getText().toString());
                     float b = Float.parseFloat(secondNumber.getText().toString());
-
-
                     if(additionRadio.isChecked()){
                         finalResult = (additionRadio.getText().toString() + ": " +
                                 new Addition().calculate(a,b));
@@ -61,22 +61,30 @@ public class MainActivity extends Activity {
 
                     if(substractionRadio.isChecked()){
                         finalResult = (substractionRadio.getText().toString() + ": " +
-                            new Substraction().calculate(a,b));
+                                new Substraction().calculate(a,b));
                     }
 
                     if(divisionRadio.isChecked()){
                         finalResult = (divisionRadio.getText().toString() + ": " +
-                            new Division().calculate(a,b));
+                                new Division().calculate(a,b));
                     }
 
                     if(multiplicationRadio.isChecked()){
                         finalResult = (multiplicationRadio.getText().toString() + ": " +
-                            new Multiplication().calculate(a,b));
+                                new Multiplication().calculate(a,b));
+                    }
+                    resultText.setText(finalResult);
+                    Intent i = new Intent(getApplicationContext(), ResultActivity.class);
+                    i.putExtra("ResultText", finalResult);
+                    startActivity(i);
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Wpisz wartosc", Toast.LENGTH_LONG).show();
                 }
-                resultText.setText(finalResult);
-                Intent i = new Intent(getApplicationContext(), ResultActivity.class);
-                i.putExtra("ResultText", finalResult);
-                startActivity(i);
+
+
+
+
+
             }
         });
 

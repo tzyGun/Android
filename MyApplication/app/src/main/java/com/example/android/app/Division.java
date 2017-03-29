@@ -1,4 +1,4 @@
-package com.example.sylwek.app;
+package com.example.android.app;
 
 /**
  * Created by Sylwek on 19.03.2017.
