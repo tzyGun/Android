@@ -1,4 +1,4 @@
-package com.example.sylwek.app;
+package com.example.android.app;
 
 import org.junit.Test;
 
