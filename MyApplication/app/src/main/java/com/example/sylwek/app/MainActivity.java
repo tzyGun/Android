@@ -1,13 +1,13 @@
 package com.example.sylwek.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     EditText firstNumber;
     EditText secondNumber;
 
-
+    public String finalResult;
 
 
     @Override
@@ -47,10 +47,6 @@ public class MainActivity extends Activity {
         this.firstNumber = (EditText) findViewById(R.id.firstNumber);
         this.secondNumber = (EditText) findViewById(R.id.secondNumber);
 
-
-
-
-
         this.calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,25 +55,30 @@ public class MainActivity extends Activity {
 
 
                     if(additionRadio.isChecked()){
-                        resultText.setText(additionRadio.getText().toString() + ": " +
-                                new Addition().calculate(a,b) );
+                        finalResult = (additionRadio.getText().toString() + ": " +
+                                new Addition().calculate(a,b));
                     }
 
                     if(substractionRadio.isChecked()){
-                    resultText.setText(substractionRadio.getText().toString() + ": " +
-                            new Substraction().calculate(a,b) );
+                        finalResult = (substractionRadio.getText().toString() + ": " +
+                            new Substraction().calculate(a,b));
                     }
 
                     if(divisionRadio.isChecked()){
-                    resultText.setText(divisionRadio.getText().toString() + ": " +
-                            new Division().calculate(a,b) );
+                        finalResult = (divisionRadio.getText().toString() + ": " +
+                            new Division().calculate(a,b));
                     }
 
                     if(multiplicationRadio.isChecked()){
-                    resultText.setText(multiplicationRadio.getText().toString() + ": " +
-                            new Multiplication().calculate(a,b) );
+                        finalResult = (multiplicationRadio.getText().toString() + ": " +
+                            new Multiplication().calculate(a,b));
                 }
+                resultText.setText(finalResult);
+                Intent i = new Intent(getApplicationContext(), ResultActivity.class);
+                i.putExtra("ResultText", finalResult);
+                startActivity(i);
             }
         });
+
     }
 }
